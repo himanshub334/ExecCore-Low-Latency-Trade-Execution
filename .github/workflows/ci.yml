@@ -1,0 +1,13 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: C++ build
+        run: cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release && cmake --build cpp/build -j
+      - name: C++ tests
+        run: ctest --test-dir cpp/build --output-on-failure
+      - name: Java tests
+        run: cd java && mvn -q test

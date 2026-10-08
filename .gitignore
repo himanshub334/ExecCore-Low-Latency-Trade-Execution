@@ -1,0 +1,7 @@
+cpp/build/
+target/
+*.class
+*.html
+.idea/
+.vscode/
+.DS_Store
